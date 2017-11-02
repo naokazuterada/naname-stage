@@ -1,7 +1,7 @@
 {
-  "name": "middleman-template",
-  "version": "1.0.0",
-  "description": "Middleman template files for static web",
+  "name": "Stage Creator",
+  "version": "0.0.1",
+  "description": "ななめな学校２用の教材",
   "main": "script/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,14 +30,9 @@
     "webpack": "^3.8.1"
   },
   "dependencies": {
-    "flickity": "^2.0.10",
-    "js-cookie": "^2.1.3",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.0",
     "mobile-detect": "^1.3.7",
-    "moment": "^2.19.1",
-    "striptags": "^3.1.0",
-    "three-js": "^79.0.0",
     "vue": "^2.5.2",
     "vue-resize-directive": "^1.0.0",
     "vue-router": "^3.0.1",
