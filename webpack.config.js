@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+// var webpack = require('webpack');
 var Clean = require('clean-webpack-plugin');
 
 module.exports = {
@@ -7,8 +7,11 @@ module.exports = {
   },
 
   resolve: {
-    root: __dirname + '/source/script',
-    // extensions: ['','.js','.jsx']
+    modules: [__dirname + '/source/script', 'node_modules'],
+    // HTMLファイル内でVueの記法を可能にする
+    alias: {
+      'vue$': 'vue/dist/vue.js'
+    }
   },
 
   output: {
@@ -30,6 +33,10 @@ module.exports = {
         test: /\.json$/,
         exclude: /node_modules/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
       }
     ],
   },
