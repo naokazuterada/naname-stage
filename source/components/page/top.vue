@@ -1,8 +1,8 @@
 <template lang="pug">
 
-.container
-  .box(v-for="(b,index) in boxes" draggable="true" :style="{ 'grid-column': b.col, 'grid-row': b.row }")
-    span(v-text="index")
+.container(:style="{width: 100*col+'px'}")
+  block(v-for="(b,i) in new Array(col*row)" :row="Math.floor(i/col)+1" :col="i%col+1" :draggable="false")
+  block(v-for="(b,i) in boxes" :col="b.col" :row="b.row" :label="i")
 
 </template>
 
@@ -10,29 +10,25 @@
 
 .container
   display: grid
-  padding: 0
   background-color: #cdcdcd
   grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px
   grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px
-  grid-gap: 0
+  // padding: 0
+  // grid-gap: 0
 
-.box
-  background-color: gray
-  display: table
+.empty-block
+  background-color: #ccc
   width: 100px
   height: 100px
-  span
-    display: table-cell
-    vertical-align: middle
-    text-align: center
-    width: 100%
-    height: 100%
+  z-index: 0
 
 </style>
 
 <script>
 
 import Vue from 'vue';
+
+Vue.component('block', require('../Block.vue').default);
 
 export default Vue.extend({
   props: {
@@ -47,6 +43,12 @@ export default Vue.extend({
         ];
       }
     }
+  },
+  data: function(){
+    return {
+      col: 12,
+      row: 10
+    };
   }
 });
 
